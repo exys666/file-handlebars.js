@@ -2,6 +2,30 @@
     "name": "file-handlebars",
     "version": "0.0.1",
 
+    "author": "Bartosz Niziołek <exys666@gmail.com>",
+
+    "license": "BSD-2-Clause",
+
+    "description": "Handlebars.js wrapper, simplify loading templates from files",
+
+    "keywords": [
+        "handlebars",
+        "handlebars.js",
+        "files",
+        "watch"
+    ],
+
+    "main": "main.js",
+
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/exys666/file-handlebars.js.git"
+    },
+
+    "bugs": {
+        "url": "https://github.com/exys666/file-handlebars.js/issues"
+    },
+
     "dependencies": {
         "handlebars": "~2.0.0"
     },
@@ -10,5 +34,10 @@
         "grunt": "~0.4.5",
         "mocha": "~2.0.1",
         "chai": "~1.10.0"
+    },
+
+    "scripts": {
+        "test": "mocha"
     }
+
 }
