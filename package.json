@@ -1,0 +1,14 @@
+{
+    "name": "file-handlebars",
+    "version": "0.0.1",
+
+    "dependencies": {
+        "handlebars": "~2.0.0"
+    },
+
+    "devDependencies": {
+        "grunt": "~0.4.5",
+        "mocha": "~2.0.1",
+        "chai": "~1.10.0"
+    }
+}
