@@ -1,12 +1,12 @@
 {
     "name": "file-handlebars",
-    "version": "0.1.0-dev",
+    "version": "0.1.0",
 
     "author": "Bartosz Niziołek <exys666@gmail.com>",
 
     "license": "BSD-2-Clause",
 
-    "description": "Handlebars.js wrapper, simplify loading templates from files",
+    "description": "Handlebars.js wrapper, simplifies loading templates from files",
 
     "keywords": [
         "handlebars",
