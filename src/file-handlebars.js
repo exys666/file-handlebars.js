@@ -27,5 +27,25 @@ module.exports = function (Handlebars) {
 
         return Handlebars.compile(read(path), options);
     };
+
+    this.createFrame = function (data) {
+        return Handlebars.createFrame(data);
+    };
+
+    this.escapeExpression = function (string) {
+        return Handlebars.escapeExpression(string);
+    };
+
+    this.log = function (level, message) {
+        return Handlebars.log(level, message);
+    };
+
+    this.registerHelper = function (name, helper) {
+        return Handlebars.registerHelper(name, helper);
+    };
+
+    this.unregisterHelper = function (name) {
+        return Handlebars.unregisterHelper(name);
+    };
     
 }
