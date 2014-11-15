@@ -40,6 +40,18 @@ describe('compile()', function () {
         }, 250);
     });
 
+    it('should pass options to Handlebars', function () {
+        // given
+        file.create('test.tmpl', '<h1>{{test}}</h1>');
+
+        // when
+        var template = FileHandlebars.compile(file.path('test.tmpl'), { noEscape: true });
+
+        // then
+        expect(template({ test: '<span>ABC</span>' })).to.equal('<h1><span>ABC</span></h1>');
+
+    });
+
     afterEach(function () {
         file.clean();
     });

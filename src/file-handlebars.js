@@ -10,13 +10,13 @@ module.exports = function (Handlebars) {
 
     this.compile = function (path, options) {
         if (options && options.watch) {
-            templates[path] = Handlebars.compile(read(path));
+            templates[path] = Handlebars.compile(read(path), options);
 
             var watchOptions = options.interval ? { interval: options.interval } : {};
 
             fs.watchFile(path, watchOptions, function (curr, prev) {
                 if (curr.mtime !== prev.mtime) {
-                    templates[path] = Handlebars.compile(read(path));
+                    templates[path] = Handlebars.compile(read(path), options);
                 }
             });
 
@@ -25,7 +25,7 @@ module.exports = function (Handlebars) {
             };
         }
 
-        return Handlebars.compile(read(path));
+        return Handlebars.compile(read(path), options);
     };
     
 }
