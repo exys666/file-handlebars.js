@@ -1,6 +1,6 @@
 {
     "name": "file-handlebars",
-    "version": "0.1.0",
+    "version": "0.1.1",
 
     "author": "Bartosz Niziołek <exys666@gmail.com>",
 
@@ -15,7 +15,7 @@
         "watch"
     ],
 
-    "main": "main.js",
+    "main": "src/main.js",
 
     "repository": {
         "type": "git",
