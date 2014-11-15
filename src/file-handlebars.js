@@ -28,7 +28,17 @@ module.exports = function (Handlebars) {
         return Handlebars.compile(read(path), options);
     };
 
-    this.registerPartial = function (name, path) {
+    this.registerPartial = function (name, path, options) {
+        if (options && options.watch) {
+            var watchOptions = options.interval ? { interval: options.interval } : {};
+
+            fs.watchFile(path, watchOptions, function (curr, prev) {
+                if (curr.mtime !== prev.mtime) {
+                    Handlebars.unregisterPartial(name);
+                    Handlebars.registerPartial(name, read(path));
+                }
+            });
+        }
         return Handlebars.registerPartial(name, read(path));
     };
 
