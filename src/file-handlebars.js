@@ -27,5 +27,39 @@ module.exports = function (Handlebars) {
 
         return Handlebars.compile(read(path), options);
     };
+
+    this.registerPartial = function (name, path, options) {
+        if (options && options.watch) {
+            var watchOptions = options.interval ? { interval: options.interval } : {};
+
+            fs.watchFile(path, watchOptions, function (curr, prev) {
+                if (curr.mtime !== prev.mtime) {
+                    Handlebars.unregisterPartial(name);
+                    Handlebars.registerPartial(name, read(path));
+                }
+            });
+        }
+        return Handlebars.registerPartial(name, read(path));
+    };
+
+    this.createFrame = function (data) {
+        return Handlebars.createFrame(data);
+    };
+
+    this.escapeExpression = function (string) {
+        return Handlebars.escapeExpression(string);
+    };
+
+    this.log = function (level, message) {
+        return Handlebars.log(level, message);
+    };
+
+    this.registerHelper = function (name, helper) {
+        return Handlebars.registerHelper(name, helper);
+    };
+
+    this.unregisterHelper = function (name) {
+        return Handlebars.unregisterHelper(name);
+    };
     
 }
