@@ -1,7 +1,7 @@
 var expect = require('chai').expect;
 var file = require('./filesTestUtils');
 
-var HF = require('../src/handlebars-files');
+var FileHandlebars = require('../src/main');
 
 describe('compile()', function () {
 
@@ -14,18 +14,18 @@ describe('compile()', function () {
         file.create('test.tmpl', '<h1>{{test}}</h1>');
 
         // when
-        var template = HF.compile(file.path('test.tmpl'));
+        var template = FileHandlebars.compile(file.path('test.tmpl'));
 
         // then
         expect(template({ test: 'ABC' })).to.equal('<h1>ABC</h1>');
     });
 
-    it('should watch template', function () {
+    it('should watch template', function (done) {
         // given
         file.create('test.tmpl', '<h1>{{test}}</h1>');
 
         // when
-        var template = HF.compile(file.path('test.tmpl'), { watch: true });
+        var template = FileHandlebars.compile(file.path('test.tmpl'), { watch: true, interval: 50 });
 
         // then
         expect(template({ test: 'ABC' })).to.equal('<h1>ABC</h1>');
@@ -34,7 +34,10 @@ describe('compile()', function () {
         file.create('test.tmpl', '<h2>{{test}}</h2>');
 
         // then
-        expect(template({ test: 'ABC' })).to.equal('<h2>ABC</h2>');
+        setTimeout(function () {
+            expect(template({ test: 'ABC' })).to.equal('<h2>ABC</h2>');
+            done();
+        }, 250);
     });
 
     afterEach(function () {
