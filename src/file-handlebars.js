@@ -28,6 +28,10 @@ module.exports = function (Handlebars) {
         return Handlebars.compile(read(path), options);
     };
 
+    this.registerPartial = function (name, path) {
+        return Handlebars.registerPartial(name, read(path));
+    };
+
     this.createFrame = function (data) {
         return Handlebars.createFrame(data);
     };
